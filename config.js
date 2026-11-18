@@ -1,0 +1,1 @@
+window.LEC_API = '';
