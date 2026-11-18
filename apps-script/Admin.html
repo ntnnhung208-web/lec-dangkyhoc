@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Quản trị · LEC đăng ký học</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--pu:#2E1248;--pu2:#4B2A7B;--or:#F28C28;--bg:#F6F4F9;--line:#E6E1EE;--mu:#6B6480;--tx:#211A33}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Be Vietnam Pro",system-ui,sans-serif;background:var(--bg);color:var(--tx);font-size:16px}
+header{background:var(--pu);color:#fff}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+header .wrap{display:flex;align-items:flex-end;justify-content:space-between;padding-top:30px;padding-bottom:30px;gap:16px;flex-wrap:wrap}
+header small{font-size:13px;letter-spacing:.04em;opacity:.85}
+header h1{margin:6px 0 0;font-size:28px;font-weight:800}
+header a{color:#fff;font-size:14px;margin-left:18px;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:36px 0 34px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 26px}
+.card span{font-size:16px;color:#3a3150}.card b{display:block;font-size:38px;color:var(--pu2);margin-top:6px}
+h2{font-size:24px;margin:0 0 14px}
+.row{display:flex;gap:14px;align-items:flex-end;flex-wrap:wrap}
+label{font-weight:600;font-size:15px;display:block;margin-bottom:6px}
+input,select,textarea{font:inherit;border:1px solid var(--line);border-radius:10px;padding:11px 14px;background:#fff;color:var(--tx)}
+.btn{font:inherit;font-weight:600;border:1px solid var(--line);background:#fff;border-radius:10px;padding:11px 16px;cursor:pointer}
+.btn:hover{border-color:var(--pu2)}.btn.pri{background:var(--pu2);color:#fff;border-color:var(--pu2)}
+.note{color:var(--mu);font-size:14px;margin:12px 0}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+th{background:#F1EDF7;text-align:left;font-size:15px;color:#3a3150;padding:16px 20px}
+td{padding:18px 20px;border-top:1px solid var(--line);vertical-align:top}
+.sub{color:var(--mu);font-size:14px;margin-top:4px}
+.sel{font-weight:600;border-radius:10px;padding:10px 12px;min-width:190px}
+.s-new{background:#FFF8E1;border-color:#E8C35A;color:#7A5600}
+.s-con{background:#EEF3FF;border-color:#6E8FE8;color:#2747A6}
+.s-paid{background:#E6F6EF;border-color:#4CAF85;color:#1F6B4A}
+.s-act{background:#E6F6EF;border-color:#4CAF85;color:#1F6B4A}
+.s-no{background:#F3F3F3;border-color:#BDBDBD;color:#666}
+.s-cxl{background:#FFF0F3;border-color:#E18C9F;color:#9F1239}
+.mode{display:inline-block;margin-left:8px;font-size:12px;font-weight:700;border-radius:999px;padding:2px 9px;background:#EEF3FF;color:#2747A6;vertical-align:middle}.mode.reg{background:#FFF0E3;color:#B34700}
+.tag{display:inline-block;margin-top:8px;background:#FFF0E3;color:#B34700;border-radius:999px;padding:4px 12px;font-size:14px}
+.section{margin-bottom:40px}
+.stat td,.stat th{padding:16px 20px}
+#gate{max-width:420px;margin:90px auto;background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px}
+#gate h2{margin-bottom:8px}#gate input{width:100%;margin:14px 0}
+.err{color:#C0392B;font-size:14px;min-height:20px}
+dialog{border:none;border-radius:18px;padding:0;width:min(560px,94vw)}
+dialog form{padding:26px}dialog .f{margin-bottom:14px}dialog .f input,dialog .f select,dialog .f textarea{width:100%}
+dialog .acts{display:flex;justify-content:flex-end;gap:10px;margin-top:8px}
+.empty{padding:40px;text-align:center;color:var(--mu)}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}table{font-size:14px}td,th{padding:12px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div><small>LUCINA ENGLISH CLASS · TIẾNG ANH GIAO TIẾP</small><h1>Quản lý khách hàng đăng ký</h1></div>
+<div><a href="https://dangkyhoc.lucinaenglishclass.com/" target="_blank">Xem website ↗</a></div></div></header>
+
+<div id="gate" style="text-align:center"><h2>Đang tải…</h2><div class="err" id="gerr"></div></div>
+
+<main class="wrap" id="app" hidden>
+  <div class="cards">
+    <div class="card"><span>Tổng đăng ký</span><b id="cAll">0</b></div>
+    <div class="card"><span>Mới đăng ký</span><b id="cNew">0</b></div>
+    <div class="card"><span>Đã liên hệ</span><b id="cCon">0</b></div>
+    <div class="card"><span>Đã thanh toán / đang học</span><b id="cPaid">0</b></div>
+  </div>
+
+  <div class="section">
+    <h2>Lượt truy cập và đăng ký theo nguồn</h2>
+    <div class="row"><div><label>Từ ngày</label><input type="date" id="d1"></div><div><label>Đến ngày</label><input type="date" id="d2"></div><button class="btn" id="statBtn">Tải thống kê</button></div>
+    <div class="note">Giờ Việt Nam. Mỗi tab được tính một lượt mỗi ngày. “Trực tiếp / không rõ” gồm cả lượt vào từ ứng dụng không gửi thông tin nguồn.</div>
+    <div class="note" id="statSum"></div>
+    <table class="stat"><thead><tr><th>Nguồn</th><th>Lượt truy cập</th><th>Đăng ký</th></tr></thead><tbody id="statBody"></tbody></table>
+  </div>
+
+  <div class="section">
+    <div class="row">
+      <div style="flex:1;min-width:260px"><label>Tìm khách hàng</label><input id="q" style="width:100%" placeholder="Tên, số điện thoại, email, mã thanh toán, khóa học..."></div>
+      <div><label>Trạng thái</label><select id="fs"><option value="">Tất cả trạng thái</option></select></div>
+      <button class="btn" id="reload">Tải lại</button><button class="btn" id="csv">Xuất CSV</button><button class="btn" id="imp">Nhập CSV</button>
+      <input type="file" id="impFile" accept=".csv" hidden>
+    </div>
+    <div class="note">“Đăng ký” = khách bấm đăng ký và nhận mã thanh toán; “Tư vấn” = khách chỉ để lại thông tin nhờ tư vấn. Cần đối chiếu sao kê trước khi xác nhận đã thanh toán.</div>
+    <table><thead><tr><th>Khách hàng</th><th>Liên hệ</th><th>Khóa học</th><th>Ngày đăng ký</th><th>Nguồn</th><th>Trạng thái</th><th></th></tr></thead><tbody id="list"></tbody></table>
+  </div>
+</main>
+
+<dialog id="dlg"><form method="dialog" id="ef">
+  <h2 id="dTitle">Khách hàng</h2><div class="sub" id="dSub" style="margin-bottom:16px"></div>
+  <div class="f"><label>Họ tên</label><input name="name"></div>
+  <div class="f"><label>Số điện thoại</label><input name="phone"></div>
+  <div class="f"><label>Email</label><input name="email"></div>
+  <div class="f"><label>Khóa học</label><textarea name="course" rows="3"></textarea></div>
+  <div class="f"><label>Trạng thái</label><select name="status" id="dStatus"></select></div>
+  <div class="f"><label>Ghi chú</label><textarea name="note" rows="3"></textarea></div>
+  <div class="acts"><button class="btn" value="cancel">Đóng</button><button class="btn pri" value="save" id="dSave">Lưu</button></div>
+</form></dialog>
+
+<script>
+const $ = s => document.querySelector(s);
+const SRC = {'':'Trực tiếp / không rõ',direct:'Trực tiếp / không rõ',facebook:'Facebook',google:'Google',zalo:'Zalo',tiktok:'TikTok',youtube:'YouTube',instagram:'Instagram',messenger:'Messenger'};
+const srcName = s => SRC[(s||'').toLowerCase()] || (s ? s.charAt(0).toUpperCase()+s.slice(1) : SRC['']);
+const CLS = {'Mới đăng ký':'s-new','Đã liên hệ':'s-con','Đã thanh toán':'s-paid','Đang học':'s-act','Dừng học':'s-no','Đã hủy':'s-cxl'};
+let KEY = '', DATA = {regs:[],visits:[],statuses:[]}, cur = null;
+const esc = s => String(s==null?'':s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const vnDay = d => new Date(d.getTime()+7*3600e3).toISOString().slice(0,10);
+const fmtDate = s => { if(!s) return ''; const [d,t]=String(s).split('T'); const [y,m,dd]=d.split('-'); return `${(t||'').slice(0,8)}<br>${dd}/${m}/${y}`; };
+const money = p => { const n = Number(String(p).replace(/[^\d]/g,'')); return n ? n.toLocaleString('vi-VN')+'đ' : esc(p); };
+
+function call(action, extra){
+  return new Promise((ok, no) => google.script.run.withSuccessHandler(j => j && j.ok ? ok(j) : no(new Error((j && j.error) || 'Lỗi'))).withFailureHandler(no).api(action, extra || {}));
+}
+async function load(){
+  DATA = await call('list');
+  if ($('#fs').options.length === 1) DATA.statuses.forEach(s => $('#fs').add(new Option(s, s)));
+  $('#dStatus').innerHTML = DATA.statuses.map(s => `<option>${s}</option>`).join('');
+  render(); stats();
+}
+function render(){
+  const R = DATA.regs.slice().sort((a,b) => String(b.createdAt).localeCompare(String(a.createdAt)));
+  $('#cAll').textContent = R.length;
+  $('#cNew').textContent = R.filter(r => r.status==='Mới đăng ký').length;
+  $('#cCon').textContent = R.filter(r => r.status==='Đã liên hệ').length;
+  $('#cPaid').textContent = R.filter(r => r.status==='Đã thanh toán' || r.status==='Đang học').length;
+  const q = $('#q').value.trim().toLowerCase(), fs = $('#fs').value;
+  const L = R.filter(r => (!fs || r.status===fs) && (!q || [r.name,r.phone,r.email,r.orderCode,r.course].join(' ').toLowerCase().includes(q)));
+  $('#list').innerHTML = L.length ? L.map(r => `<tr>
+    <td><b>${esc(r.name)}</b><span class="mode ${r.mode==='reg'?'reg':''}">${r.mode==='reg'?'Đăng ký':'Tư vấn'}</span><div class="sub">${esc(r.orderCode)}</div></td>
+    <td><a href="tel:${esc(r.phone)}">${esc(r.phone)}</a><div class="sub">${esc(r.email)}</div></td>
+    <td style="max-width:360px">${esc(r.course)}${r.amount?`<div class="sub">Mã thanh toán: ${money(r.amount)}${r.discounted?' · giá ưu đãi 48h':''}</div>`:''}</td>
+    <td>${fmtDate(r.createdAt)}</td>
+    <td>${srcName(r.source)}</td>
+    <td><select class="sel ${CLS[r.status]||''}" data-id="${esc(r.id)}">${DATA.statuses.map(s=>`<option ${s===r.status?'selected':''}>${s}</option>`).join('')}</select></td>
+    <td><button class="btn" data-edit="${esc(r.id)}">Xem / sửa</button></td></tr>`).join('') : '<tr><td colspan="7" class="empty">Chưa có khách nào.</td></tr>';
+}
+function stats(){
+  const a = $('#d1').value, b = $('#d2').value, agg = {};
+  const add = (s,k) => { const n = srcName(s); agg[n] = agg[n] || {v:0,r:0}; agg[n][k]++; };
+  DATA.visits.filter(v => v.day>=a && v.day<=b).forEach(v => add(v.source,'v'));
+  DATA.regs.filter(r => { const d=String(r.createdAt).slice(0,10); return d>=a && d<=b; }).forEach(r => add(r.source,'r'));
+  const rows = Object.entries(agg).sort((x,y) => y[1].v-x[1].v);
+  const tv = rows.reduce((s,x)=>s+x[1].v,0), tr = rows.reduce((s,x)=>s+x[1].r,0);
+  const f = d => d.split('-').reverse().join('/');
+  $('#statSum').textContent = `Từ ${f(a)} đến ${f(b)} · Tính cả ngày bắt đầu và kết thúc · ${tv} lượt truy cập, ${tr} đăng ký`;
+  $('#statBody').innerHTML = rows.map(([n,x]) => `<tr><td>${n}</td><td>${x.v}</td><td>${x.r}</td></tr>`).join('') + `<tr><td><b>Tổng</b></td><td><b>${tv}</b></td><td><b>${tr}</b></td></tr>`;
+}
+async function update(id, fields){ await call('update', {id, fields}); const r = DATA.regs.find(x=>x.id===id); Object.assign(r, fields); render(); stats(); }
+function csvCell(v){ v = String(v==null?'':v); return /[",\n]/.test(v) ? '"'+v.replace(/"/g,'""')+'"' : v; }
+function exportCsv(){
+  const cols = ['createdAt','mode','name','phone','email','course','orderCode','amount','source','campaign','status','note'];
+  const head = ['Ngày đăng ký','Loại','Họ tên','SĐT','Email','Khóa học','Mã thanh toán','Học phí','Nguồn','Chiến dịch','Trạng thái','Ghi chú'];
+  const csv = '﻿' + [head].concat(DATA.regs.map(r => cols.map(c => c==='source'?srcName(r.source):c==='mode'?(r.mode==='reg'?'Đăng ký':'Tư vấn'):r[c]))).map(r => r.map(csvCell).join(',')).join('\n');
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv],{type:'text/csv'})); a.download = 'lec-dang-ky-hoc-'+vnDay(new Date())+'.csv'; a.click();
+}
+function parseCsv(t){
+  const rows=[]; let row=[], cell='', q=false;
+  for (let i=0;i<t.length;i++){ const c=t[i];
+    if(q){ if(c==='"'&&t[i+1]==='"'){cell+='"';i++} else if(c==='"') q=false; else cell+=c; }
+    else if(c==='"') q=true; else if(c===','){row.push(cell);cell=''} else if(c==='\n'){row.push(cell);rows.push(row);row=[];cell=''} else if(c!=='\r') cell+=c; }
+  if(cell||row.length){row.push(cell);rows.push(row)} return rows;
+}
+async function importCsv(file){
+  const t = (await file.text()).replace(/^﻿/,''); const rows = parseCsv(t); const head = rows.shift().map(h => h.trim().toLowerCase());
+  const pick = (r, names) => { for (const n of names){ const i = head.findIndex(h => h===n || h.includes(n)); if (i>=0 && r[i]) return r[i].trim(); } return ''; };
+  const out = rows.filter(r => r.length>1).map(r => ({
+    orderCode: pick(r,['mã thanh toán','mã đơn','ordercode']), createdAt: pick(r,['ngày đăng ký','createdat','ngày','thời gian']), mode: /đăng ký|reg/i.test(pick(r,['loại','mode'])) ? 'reg' : 'consult', course: pick(r,['khóa học','course','gói']), amount: pick(r,['học phí','amount','giá']),
+    name: pick(r,['họ tên','khách hàng','tên','name']), phone: pick(r,['sđt','số điện thoại','điện thoại','phone']),
+    email: pick(r,['email']),
+    source: pick(r,['nguồn','source']), status: pick(r,['trạng thái','status']) || 'Mới đăng ký',
+    note: pick(r,['ghi chú','note'])
+  })).filter(x => x.name);
+  const j = await call('import', {rows: out}); alert(`Đã nhập ${j.imported} khách mới.`); load();
+}
+$('#reload').onclick = () => load(); $('#csv').onclick = exportCsv;
+$('#imp').onclick = () => $('#impFile').click(); $('#impFile').onchange = e => e.target.files[0] && importCsv(e.target.files[0]);
+$('#q').oninput = render; $('#fs').onchange = render; $('#statBtn').onclick = stats;
+$('#list').onchange = e => { const s = e.target.closest('select[data-id]'); if (s) update(s.dataset.id, {status: s.value}).catch(err => alert(err.message)); };
+$('#list').onclick = e => { const b = e.target.closest('[data-edit]'); if (!b) return; cur = DATA.regs.find(r => r.id===b.dataset.edit);
+  const f = $('#ef'); ['name','phone','email','course','status','note'].forEach(k => f.elements[k].value = cur[k]||'');
+  $('#dTitle').textContent = cur.name; $('#dSub').textContent = `${cur.mode==='reg'?'Đăng ký':'Tư vấn'} · ${String(cur.createdAt).replace('T',' ')}` + (cur.orderCode ? ` · mã ${cur.orderCode} · ${money(cur.amount)}` : '') + (cur.campaign ? ` · chiến dịch: ${cur.campaign}` : '');
+  $('#dlg').showModal(); };
+$('#dlg').onclose = () => { if ($('#dlg').returnValue !== 'save' || !cur) return; const f = $('#ef'), fields = {};
+  ['name','phone','email','course','status','note'].forEach(k => fields[k] = f.elements[k].value); update(cur.id, fields).catch(err => alert(err.message)); };
+const t = vnDay(new Date()); $('#d1').value = t; $('#d2').value = t;
+load().then(() => { $('#gate').hidden=true; $('#app').hidden=false; }).catch(e => { $('#gerr').textContent = e.message; });
+</script>
+</body>
+</html>
