@@ -85,12 +85,12 @@ function doPost(e){
       if (!PRICES[pkg] || !PRICES[pkg][cls]) return out_({ok: false, error: 'Gói học không hợp lệ.'});
       const offer = offerOf_(vid || lead.vid, false), discounted = offer.status !== 'expired';
       const promo = String(b.code || '').trim().toUpperCase() === 'COLUCYTAGT' && Date.now() <= Date.parse('2026-11-30T23:59:59+07:00');
-      const amount = (discounted ? P48[pkg][cls] : PRICES[pkg][cls][1]) - (promo ? 299000 : 0);
+      const amount = (discounted ? P48[pkg][cls] : PRICES[pkg][cls][1]) - (promo ? 300000 : 0);
       const code = 'LEC' + Utilities.getUuid().replace(/-/g, '').slice(0, 6).toUpperCase();
       const expiresAt = Date.now() + PAY_MS;
       add_('orders', {id: str_(b.id, 64), leadId: lead.id, code, createdAt: now_(), pkg, cls, amount, discounted: (discounted ? '48h' : '') + (promo ? ' + COLUCYTAGT' : ''), expiresAt});
       set_('leads', lead._row, 'orderCode', code); set_('leads', lead._row, 'amount', amount);
-      set_('leads', lead._row, 'discounted', (discounted ? 'Giá 48h' : '') + (promo ? ' · mã COLUCYTAGT −299K' : '')); set_('leads', lead._row, 'orderAt', now_());
+      set_('leads', lead._row, 'discounted', (discounted ? 'Giá 48h' : '') + (promo ? ' · mã COLUCYTAGT −300K' : '')); set_('leads', lead._row, 'orderAt', now_());
       return out_({ok: true, offer, order: {code, amount, discounted, expiresAt}});
     }
     return out_({ok: false, error: 'Yêu cầu không hợp lệ.'});

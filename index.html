@@ -789,11 +789,11 @@ input:focus,select:focus{outline:3px solid #FFD3A1;border-color:#5D0390}
 </div>
 <sc-if value="{{tagtActive}}"><div class="promo-nov" id="uu-dai-thang-11" role="region" aria-labelledby="pn-title" style="padding:0;background:none;margin:0 0 18px"><div class="pn-card">
 <div style="position:relative;z-index:1"><div class="pn-kicker">🎁 TIN VUI · QUÀ TRONG THÁNG 11</div>
-<h2 class="pn-title" id="pn-title" style="color:#FFFFFF">Áp mã COLUCYTAGT để được <span>giảm thêm 299K mỗi slot</span></h2>
+<h2 class="pn-title" id="pn-title" style="color:#FFFFFF">Áp mã COLUCYTAGT để được <span>giảm thêm 300K mỗi slot</span></h2>
 <p class="pn-sub">Dành cho bạn đăng ký lớp Tiếng Anh Giao Tiếp LEC ngay trên website. Mã giảm thẳng vào học phí, cộng thêm vào giá ưu đãi đang áp dụng.</p>
 <div class="pn-trust"><span>✓ Áp dụng <b>mọi level</b>, Đời Sống &amp; Công Việc</span><span>✓ Lớp <b>1-6 · 1-2 · 1-1</b>, gói 3 hoặc 6 tháng</span><span>✓ <b>Cộng dồn</b> với ưu đãi 48h</span></div></div>
 <div class="pn-ticket" style="z-index:1"><div style="font-size:13px;font-weight:900;letter-spacing:.08em;color:#B34700">QUÀ THÁNG 11 · MỖI SLOT ĐĂNG KÝ</div>
-<div style="font-size:16px;font-weight:800;color:#5A5270;margin-top:8px">Giảm thêm</div><div class="pn-price">299.000đ</div><div style="font-size:15px;font-weight:800;color:#5D0390;margin-top:6px">khi áp mã COLUCYTAGT</div>
+<div style="font-size:16px;font-weight:800;color:#5A5270;margin-top:8px">Giảm thêm</div><div class="pn-price">300.000đ</div><div style="font-size:15px;font-weight:800;color:#5D0390;margin-top:6px">khi áp mã COLUCYTAGT</div>
 <div class="pn-line"></div>
 <div class="pn-code"><div><span>MÃ ƯU ĐÃI</span><b>COLUCYTAGT</b></div><button type="button" class="pn-copy" onClick="{{copyTagt}}">{{tagtCopyLabel}}</button></div>
 <button type="button" class="pn-cta" onClick="{{applyTagt}}">👉 Điền ngay form đăng ký</button>
@@ -1097,7 +1097,7 @@ class Component extends DCLogic {
     var fbSrc = ['assets/597143de1f66126b289f587ccbc43765.jpg', 'assets/7439492e19f20ae0572fa1760e895da7.jpg', 'assets/a6f75760b04a236f76eff550e32e0ae5.jpg', 'assets/921ea8850e83b7526b621b7a813fc877.jpg', 'assets/c6ac218ed98ff8ba15c7bae23975c0f5.jpg', 'assets/72522630fc570f79ae7ae5f3d143431b.jpg', 'assets/a6adbe92d0b499428bfd114435888259.jpg', 'assets/16c8490be1a8c4194c2f6fbb746f8756.jpg', 'assets/5c5ac96f664b89b3ea9d69cb78261a16.jpg', 'assets/7da87b67ec8a3af3434618a295d12d60.jpg', 'assets/a97c1b3d7be3c6d95e61bd0b2855e804.jpg', 'assets/a829a97bc5bf86de9c2bbb665c75a9bf.jpg', 'assets/c1a2df5452060965f63b33fc377561e2.jpg', 'assets/5ccc5f1eba204689d29cab1ca23b75d3.jpg', 'assets/631fcd616266b407128df9aeae24b767.jpg', 'assets/dcec9a696ae27d2ed8b2f951a58d366c.jpg', 'assets/fc6310318c564ba1a2607d6371309344.jpg', 'assets/6edf8419cd754fd5267092b6a444245a.jpg', 'assets/c650ca82604f9d3c7adac4cb5cc0d6f1.jpg', 'assets/baaabe09e1cd374399f8b5eb6d6020ca.jpg', 'assets/8af70c66ac4af474dca2a556790b0448.jpg', 'assets/ed7ff002c92196ddfeb6e5557bf3b9bd.jpg', 'assets/43333522b69b1ff59487a7fe6c307cca.jpg', 'assets/eac6d5c4fd479a21263c3df43a1799c6.jpg', 'assets/6ef7723b0bac637f3a36f97c837c27ae.jpg'];
     var CLS = { '1-6': 'Lớp nhóm 1-6', '1-2': 'Lớp 1-2', '1-1': 'Lớp 1-1 · cá nhân hóa' };
     var fmt = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + 'đ'; };
-    var TAGT = 'COLUCYTAGT', TAGT_OFF = 299000, TAGT_END = Date.parse('2026-11-30T23:59:59+07:00');
+    var TAGT = 'COLUCYTAGT', TAGT_OFF = 300000, TAGT_END = Date.parse('2026-11-30T23:59:59+07:00');
     var tagtActive = Date.now() <= TAGT_END;
     var codeCheck = function (c) { c = String(c || '').trim().toUpperCase(); if (!c) return { ok: false, code: '' }; if (c === TAGT && Date.now() <= TAGT_END) return { ok: true, code: c }; return { ok: false, code: c, err: c === TAGT ? 'Mã COLUCYTAGT chỉ áp dụng đến hết 30/11/2026.' : 'Mã ưu đãi chưa đúng. Bạn kiểm tra lại hoặc để trống nhé.' }; };
     if (!self._codeListener) { self._codeListener = true; document.addEventListener('input', function (e) { if (e.target && e.target.id === 'f-code') self.setState({ quoteTick: Date.now() }); }); }
@@ -1176,7 +1176,7 @@ class Component extends DCLogic {
       var placement = window.lecPlacementResult;
       if (placement) payload.course += ' · Test đầu vào ' + placement.band + ' (' + placement.score + '/20) · Gợi ý Level ' + placement.level;
       var cc = codeCheck(f.code);
-      if (cc.ok) payload.course += ' · Mã ' + cc.code + ' (−299K)';
+      if (cc.ok) payload.course += ' · Mã ' + cc.code + ' (−300K)';
       var signature = JSON.stringify(payload);
       if (!self.leadAttempt || self.leadAttempt.signature !== signature) {
         self.leadAttempt = { signature: signature, id: crypto.randomUUID() };
@@ -1218,10 +1218,10 @@ class Component extends DCLogic {
     var selectedCls = PRICES[selectedPkg][selectedForm.cls] ? selectedForm.cls : '1-6';
     var formQuote = priceLine(selectedPkg, selectedCls);
     var fCode = codeCheck(selectedForm.code);
-    if (fCode.ok) { var baseP = effectivePrice(selectedPkg, selectedCls), newP = baseP - TAGT_OFF; formQuote = Object.assign({}, formQuote, { priceLabel: 'ĐÃ ÁP MÃ ' + TAGT + ' · GIẢM THÊM 299K', price: fmt(newP), monthly: '≈ ' + fmt(Math.round(newP / Number(selectedPkg))) + '/tháng', per: '≈ ' + fmt(Math.round(newP / (selectedPkg === '3' ? 24 : 48))) + '/buổi 1,5 giờ', save: 'Đã giảm thêm ' + fmt(TAGT_OFF) + ' (quà tháng 11) · trước mã: ' + fmt(baseP) }); }
-    var codeMsg = !selectedForm.code ? (tagtActive ? 'Nhập mã COLUCYTAGT trong tháng 11 để giảm thêm 299.000đ.' : '') : (fCode.ok ? '✓ Đã áp mã ' + TAGT + ': giảm thêm 299.000đ' : (fCode.err || ''));
+    if (fCode.ok) { var baseP = effectivePrice(selectedPkg, selectedCls), newP = baseP - TAGT_OFF; formQuote = Object.assign({}, formQuote, { priceLabel: 'ĐÃ ÁP MÃ ' + TAGT + ' · GIẢM THÊM 300K', price: fmt(newP), monthly: '≈ ' + fmt(Math.round(newP / Number(selectedPkg))) + '/tháng', per: '≈ ' + fmt(Math.round(newP / (selectedPkg === '3' ? 24 : 48))) + '/buổi 1,5 giờ', save: 'Đã giảm thêm ' + fmt(TAGT_OFF) + ' (quà tháng 11) · Học phí mặc định: ' + fmt(baseP) }); }
+    var codeMsg = !selectedForm.code ? (tagtActive ? 'Nhập mã COLUCYTAGT trong tháng 11 để giảm thêm 300.000đ.' : '') : (fCode.ok ? '✓ Đã áp mã ' + TAGT + ': giảm thêm 300.000đ' : (fCode.err || ''));
     var codeColor = !selectedForm.code ? '#5A5270' : (fCode.ok ? '#1F6B4A' : '#C0392B');
-    var payNote = (st.payDiscounted && !offerExpired ? 'giá ưu đãi 48h · ' : 'giá khuyến mại hiện áp dụng · ') + (st.payPkg === '6' ? 'combo khóa 6 tháng' : 'khóa 3 tháng') + ' · ' + (CLS[st.payCls] || '') + (st.payCode ? ' · đã áp mã ' + st.payCode + ' (−299K)' : '');
+    var payNote = (st.payDiscounted && !offerExpired ? 'giá ưu đãi 48h · ' : 'giá khuyến mại hiện áp dụng · ') + (st.payPkg === '6' ? 'combo khóa 6 tháng' : 'khóa 3 tháng') + ' · ' + (CLS[st.payCls] || '') + (st.payCode ? ' · đã áp mã ' + st.payCode + ' (−300K)' : '');
     return {
       showOffer48: showOffer48,
       offerExpired: offerExpired,
