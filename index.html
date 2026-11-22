@@ -121,6 +121,34 @@ window.fetch=function(u,o){try{var m=typeof u==='string'&&u.match(/^\/api\/lec\/
 <script src="/lec-analytics.js" defer></script>
 <link rel="stylesheet" href="/lec-placement.css">
 <script src="/lec-placement.js" defer></script>
+<style>
+.promo-nov{padding:40px 0 8px;background:linear-gradient(180deg,#FBF7F1 0%,#FFFFFF 100%)}
+.promo-nov .pn-card{position:relative;overflow:hidden;border-radius:28px;padding:38px 40px;background:radial-gradient(120% 140% at 0% 0%,#5B1E8C 0%,#3A0D63 45%,#24063F 100%);color:#FFFFFF;box-shadow:0 24px 60px rgba(58,13,99,.28);border:1px solid rgba(255,214,150,.35);display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:28px 40px;align-items:center}
+.promo-nov .pn-card:before{content:"";position:absolute;right:-90px;top:-90px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,194,122,.28),rgba(255,194,122,0) 70%)}
+.promo-nov .pn-card:after{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,#F7C26B,#FFE7B8,#F7941D,#F7C26B)}
+.pn-kicker{display:inline-flex;align-items:center;gap:8px;background:rgba(255,214,150,.14);border:1px solid rgba(255,214,150,.45);color:#FFD9A0;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:900;letter-spacing:.08em}
+.pn-title{font-size:clamp(26px,3.4vw,38px);line-height:1.2;font-weight:900;margin:14px 0 6px;letter-spacing:-.01em}
+.pn-title span{background:linear-gradient(90deg,#FFE3B0,#F7B85A);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pn-sub{font-size:17px;line-height:1.6;color:#E6D6F3;max-width:560px}
+.pn-trust{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;font-size:14.5px;color:#F1E6FA}
+.pn-trust b{color:#FFC27A}
+.pn-ticket{position:relative;background:#FFFDF8;color:#1A1230;border-radius:22px;padding:24px 24px 22px;box-shadow:0 14px 34px rgba(0,0,0,.25)}
+.pn-ticket:before,.pn-ticket:after{content:"";position:absolute;top:96px;width:22px;height:22px;border-radius:50%;background:#3A0D63}
+.pn-ticket:before{left:-11px}.pn-ticket:after{right:-11px}
+.pn-old{font-size:16px;color:#8A80A0;text-decoration:line-through;font-weight:700}
+.pn-price{font-size:clamp(44px,5vw,58px);line-height:1;font-weight:900;color:#E2580B;letter-spacing:-.02em;margin-top:4px}
+.pn-price small{font-size:.42em;font-weight:800;color:#5D0390;margin-left:6px;letter-spacing:0}
+.pn-line{border-top:2px dashed #EADCF5;margin:18px 0 14px}
+.pn-code{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#F7F2FD;border:1px solid #E2CFF3;border-radius:14px;padding:10px 12px 10px 16px}
+.pn-code span{font-size:12px;font-weight:900;letter-spacing:.08em;color:#7A6A92}
+.pn-code b{display:block;font-size:22px;letter-spacing:.08em;color:#5D0390}
+.pn-copy{white-space:nowrap;flex:none;border:0;background:#5D0390;color:#FFFFFF;font:inherit;font-weight:800;font-size:14px;border-radius:10px;padding:9px 12px;cursor:pointer}
+.pn-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:14px;border:0;cursor:pointer;background:linear-gradient(180deg,#FFA43A,#F7941D);color:#2A1300;font:inherit;font-weight:900;font-size:19px;border-radius:14px;padding:16px 18px;box-shadow:0 10px 24px rgba(247,148,29,.45)}
+.pn-cta:hover{filter:brightness(1.05)}
+.pn-note{font-size:13px;color:#6B6380;text-align:center;margin-top:10px}
+.promo-nov .pn-card>*{min-width:0}
+@media(max-width:860px){.promo-nov .pn-card{grid-template-columns:1fr;padding:26px 18px}.pn-ticket{padding:20px 16px}.pn-ticket:before,.pn-ticket:after{display:none}.pn-kicker{font-size:11.5px;letter-spacing:.04em}.pn-price{font-size:40px}.pn-code b{font-size:19px}}
+</style>
 </head>
 <body>
 <template id="dc-tpl">
@@ -759,8 +787,20 @@ input:focus,select:focus{outline:3px solid #FFD3A1;border-color:#5D0390}
 <div class="ct" style="margin:0;color:#5D0390">5 bước để bắt đầu học</div>
 <ol class="rs-g"><li class="rs-i"><div class="rs-n">1</div><div><div class="rs-t">Chọn level & điền form</div><div class="rs-d">Chọn level, nhánh học, hình thức lớp và ca học mong muốn.</div></div></li><li class="rs-i"><div class="rs-n">2</div><div><div class="rs-t">Test trình độ 6 phút</div><div class="rs-d"><a href="/bai-test" data-lec-placement>Làm bài test tự động miễn phí</a> hoặc bỏ qua nếu đã biết level.</div></div></li><li class="rs-i"><div class="rs-n">3</div><div><div class="rs-t">Nhận tư vấn hoặc đăng ký</div><div class="rs-d">Nhận tư vấn chi tiết, hoặc đăng ký và thanh toán ngay.</div></div></li><li class="rs-i"><div class="rs-n">4</div><div><div class="rs-t">Xếp lớp & khai giảng</div><div class="rs-d">LEC xếp lớp theo ca bạn chọn và gửi lịch khai giảng.</div></div></li><li class="rs-i"><div class="rs-n">5</div><div><div class="rs-t">Bắt đầu học</div><div class="rs-d">Vào lớp cùng giáo viên, nhận tài liệu sau mỗi buổi.</div></div></li></ol>
 </div>
+<sc-if value="{{tagtActive}}"><div class="promo-nov" id="uu-dai-thang-11" role="region" aria-labelledby="pn-title" style="padding:0;background:none;margin:0 0 18px"><div class="pn-card">
+<div style="position:relative;z-index:1"><div class="pn-kicker">🎁 TIN VUI · QUÀ TRONG THÁNG 11</div>
+<h2 class="pn-title" id="pn-title" style="color:#FFFFFF">Áp mã COLUCYTAGT để được <span>giảm thêm 299K mỗi slot</span></h2>
+<p class="pn-sub">Dành cho bạn đăng ký lớp Tiếng Anh Giao Tiếp LEC ngay trên website. Mã giảm thẳng vào học phí, cộng thêm vào giá ưu đãi đang áp dụng.</p>
+<div class="pn-trust"><span>✓ Áp dụng <b>mọi level</b>, Đời Sống &amp; Công Việc</span><span>✓ Lớp <b>1-6 · 1-2 · 1-1</b>, gói 3 hoặc 6 tháng</span><span>✓ <b>Cộng dồn</b> với ưu đãi 48h</span></div></div>
+<div class="pn-ticket" style="z-index:1"><div style="font-size:13px;font-weight:900;letter-spacing:.08em;color:#B34700">QUÀ THÁNG 11 · MỖI SLOT ĐĂNG KÝ</div>
+<div style="font-size:16px;font-weight:800;color:#5A5270;margin-top:8px">Giảm thêm</div><div class="pn-price">299.000đ</div><div style="font-size:15px;font-weight:800;color:#5D0390;margin-top:6px">khi áp mã COLUCYTAGT</div>
+<div class="pn-line"></div>
+<div class="pn-code"><div><span>MÃ ƯU ĐÃI</span><b>COLUCYTAGT</b></div><button type="button" class="pn-copy" onClick="{{copyTagt}}">{{tagtCopyLabel}}</button></div>
+<button type="button" class="pn-cta" onClick="{{applyTagt}}">👉 Điền ngay form đăng ký</button>
+<div class="pn-note">Hạn cuối: 23:59 ngày 30/11/2026 (giờ Việt Nam) · Mã tự điền sẵn vào form</div></div>
+</div></div></sc-if>
 <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:stretch">
-<form class="glow" style="flex:1 1 420px;min-width:0;background:#FFFFFF;border-radius:20px;padding:26px 22px;display:flex;flex-direction:column;gap:14px">
+<form id="lec-form" class="glow" style="flex:1 1 420px;min-width:0;background:#FFFFFF;border-radius:20px;padding:26px 22px;display:flex;flex-direction:column;gap:14px">
 <div class="ct" style="margin:0">Form đăng ký</div>
 <div class="fm-g">
 <div><label for="f-name">Họ và tên</label><input id="f-name" type="text" autocomplete="name" placeholder="Nguyễn Văn A"></div>
@@ -779,6 +819,7 @@ input:focus,select:focus{outline:3px solid #FFD3A1;border-color:#5D0390}
 <div><label for="f-slot">Ca học mong muốn</label><select id="f-slot"><optgroup label="Lớp Sáng"><option>5:00</option><option>6:30</option><option>8:00</option><option>9:30</option><option>11:00</option></optgroup><optgroup label="Lớp Chiều"><option>12:30</option><option>14:00</option><option>15:30</option><option>17:00</option></optgroup><optgroup label="Lớp Tối"><option>17:30</option><option>19:00</option><option>20:30</option><option>22:00</option></optgroup><option>Linh hoạt, cần LEC tư vấn</option></select></div>
 <div><label for="f-days">Cặp thứ lên lớp</label><select id="f-days"><option>Thứ 2 & Thứ 5</option><option>Thứ 3 & Thứ 6</option><option>Thứ 4 & Thứ 7</option><option>Linh hoạt, cần LEC tư vấn</option></select></div>
 </div>
+<div><label for="f-code">Mã ưu đãi <span style="font-weight:600;color:#7A7085">(không bắt buộc)</span></label><input id="f-code" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Nhập mã nếu có, VD: COLUCYTAGT" style="text-transform:uppercase"><div style="font-size:14px;line-height:1.5;margin-top:6px;color:{{codeColor}}">{{codeMsg}}</div></div>
 <div id="form-quote" aria-live="polite" style="background:#FFF6EE;border:1px solid #F7C99A;border-radius:14px;padding:16px;line-height:1.6"><div style="font-size:13px;font-weight:900;color:#B34700">{{formQuoteLabel}}</div><div style="font-size:14px;color:#5A5270">{{formQuoteName}}</div><div style="font-size:clamp(30px,4vw,38px);line-height:1.2;color:#E2580B;font-weight:900;margin:5px 0">{{formQuotePrice}}</div><div style="font-size:15px;font-weight:800;color:#5D0390">{{formQuoteMonthly}}</div><div style="font-size:14px;color:#5A5270">{{formQuotePer}}</div><div style="font-size:14px;color:#B34700;font-weight:700">{{formQuoteSaving}}</div><div style="font-size:13px;color:#7A7085">{{formQuoteReference}}</div><div style="font-size:12px;color:#7A7085;margin-top:7px">Giá tháng/buổi là học phí chia bình quân. Tổng học phí của gói là số tiền in lớn.</div></div>
 <sc-if value="{{hasFormErr}}" hint-placeholder-val="{{false}}"><div role="alert" style="font-size:14px;font-weight:700;color:#C0392B">{{formErr}}</div></sc-if>
 <div class="fm-b"><button type="button" onClick="{{submitConsult}}" class="btn btn-line">Nhận tư vấn chi tiết</button><button type="button" onClick="{{submitReg}}" class="btn btn-o">Đăng ký ngay</button></div>
@@ -1000,7 +1041,7 @@ class Component extends DCLogic {
     try {
       if (!self.activeLeadId) throw new Error('Chưa có đăng ký.');
       self.orderAttemptId = self.orderAttemptId || crypto.randomUUID();
-      var order = await window.lecOffer.order({ id: self.orderAttemptId, leadId: self.activeLeadId, pkg: self.state.payPkg, cls: self.state.payCls });
+      var order = await window.lecOffer.order({ id: self.orderAttemptId, leadId: self.activeLeadId, pkg: self.state.payPkg, cls: self.state.payCls, code: self.state.payCode || '' });
       self.orderAttemptId = null;
       if (generation !== self.orderGeneration) return;
       var amount = order.amount;
@@ -1056,6 +1097,10 @@ class Component extends DCLogic {
     var fbSrc = ['assets/597143de1f66126b289f587ccbc43765.jpg', 'assets/7439492e19f20ae0572fa1760e895da7.jpg', 'assets/a6f75760b04a236f76eff550e32e0ae5.jpg', 'assets/921ea8850e83b7526b621b7a813fc877.jpg', 'assets/c6ac218ed98ff8ba15c7bae23975c0f5.jpg', 'assets/72522630fc570f79ae7ae5f3d143431b.jpg', 'assets/a6adbe92d0b499428bfd114435888259.jpg', 'assets/16c8490be1a8c4194c2f6fbb746f8756.jpg', 'assets/5c5ac96f664b89b3ea9d69cb78261a16.jpg', 'assets/7da87b67ec8a3af3434618a295d12d60.jpg', 'assets/a97c1b3d7be3c6d95e61bd0b2855e804.jpg', 'assets/a829a97bc5bf86de9c2bbb665c75a9bf.jpg', 'assets/c1a2df5452060965f63b33fc377561e2.jpg', 'assets/5ccc5f1eba204689d29cab1ca23b75d3.jpg', 'assets/631fcd616266b407128df9aeae24b767.jpg', 'assets/dcec9a696ae27d2ed8b2f951a58d366c.jpg', 'assets/fc6310318c564ba1a2607d6371309344.jpg', 'assets/6edf8419cd754fd5267092b6a444245a.jpg', 'assets/c650ca82604f9d3c7adac4cb5cc0d6f1.jpg', 'assets/baaabe09e1cd374399f8b5eb6d6020ca.jpg', 'assets/8af70c66ac4af474dca2a556790b0448.jpg', 'assets/ed7ff002c92196ddfeb6e5557bf3b9bd.jpg', 'assets/43333522b69b1ff59487a7fe6c307cca.jpg', 'assets/eac6d5c4fd479a21263c3df43a1799c6.jpg', 'assets/6ef7723b0bac637f3a36f97c837c27ae.jpg'];
     var CLS = { '1-6': 'Lớp nhóm 1-6', '1-2': 'Lớp 1-2', '1-1': 'Lớp 1-1 · cá nhân hóa' };
     var fmt = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + 'đ'; };
+    var TAGT = 'COLUCYTAGT', TAGT_OFF = 299000, TAGT_END = Date.parse('2026-11-30T23:59:59+07:00');
+    var tagtActive = Date.now() <= TAGT_END;
+    var codeCheck = function (c) { c = String(c || '').trim().toUpperCase(); if (!c) return { ok: false, code: '' }; if (c === TAGT && Date.now() <= TAGT_END) return { ok: true, code: c }; return { ok: false, code: c, err: c === TAGT ? 'Mã COLUCYTAGT chỉ áp dụng đến hết 30/11/2026.' : 'Mã ưu đãi chưa đúng. Bạn kiểm tra lại hoặc để trống nhé.' }; };
+    if (!self._codeListener) { self._codeListener = true; document.addEventListener('input', function (e) { if (e.target && e.target.id === 'f-code') self.setState({ quoteTick: Date.now() }); }); }
     FAQ = FAQ.map(function (item) {
       if (item[0] !== 'Học phí bao nhiêu? Mỗi level có giá khác nhau không?') return item;
       var line = function (pk) { return ['1-6', '1-2', '1-1'].map(function (c) { return CLS[c] + ' ' + fmt(effectivePrice(pk, c)); }).join(' · '); };
@@ -1098,7 +1143,7 @@ class Component extends DCLogic {
     var readForm = function () {
       var g = function (id) { var el = document.getElementById(id); return el ? String(el.value || '').trim() : ''; };
       var gt = function (id) { var el = document.getElementById(id); return (el && el.options && el.selectedIndex >= 0) ? el.options[el.selectedIndex].text : ''; };
-      return { name: g('f-name'), phone: g('f-phone'), email: g('f-email'), level: g('f-level'), levelT: gt('f-level'), track: g('f-track'), trackT: gt('f-track'), cls: g('f-class'), clsT: gt('f-class'), pkg: g('f-pkg'), pkgT: gt('f-pkg'), slot: gt('f-slot'), days: gt('f-days') };
+      return { name: g('f-name'), phone: g('f-phone'), email: g('f-email'), level: g('f-level'), levelT: gt('f-level'), track: g('f-track'), trackT: gt('f-track'), cls: g('f-class'), clsT: gt('f-class'), pkg: g('f-pkg'), pkgT: gt('f-pkg'), slot: gt('f-slot'), days: gt('f-days'), code: g('f-code').toUpperCase() };
     };
     var validate = function (f) {
       if (!f.name || !f.phone) return 'Bạn điền giúp LEC họ tên và số điện thoại/Zalo nhé.';
@@ -1106,6 +1151,7 @@ class Component extends DCLogic {
       if (f.email && f.email.indexOf('@') < 1) return 'Email chưa đúng định dạng, bạn kiểm tra lại nhé.';
       if (f.track === 'cv' && f.level === 'L0') return 'Level 0 chỉ có Giao Tiếp Đời Sống. Bạn chọn nhánh Đời Sống, hoặc chọn level khác nhé.';
       if (f.track === 'cv' && f.cls === '1-6') return 'Giao Tiếp Công Việc chỉ có lớp 1-2 hoặc 1-1. Bạn chọn lại hình thức lớp nhé.';
+      if (f.code && !codeCheck(f.code).ok) return codeCheck(f.code).err;
       return '';
     };
     var summary = function (f) {
@@ -1115,6 +1161,7 @@ class Component extends DCLogic {
         '\nLevel: ' + f.levelT + '\nNhánh học: ' + f.trackT + '\nHình thức lớp: ' + f.clsT + '\nGói học: ' + f.pkgT +
         '\nCa học mong muốn: ' + f.slot + ' · ' + f.days +
         '\n' + (showOffer48 ? 'Học phí ưu đãi trong 48h: ' : 'Học phí hiện áp dụng: ') + fmt(effectivePrice(f.pkg, f.cls)) +
+        (codeCheck(f.code).ok ? '\nMã ưu đãi ' + TAGT + ': giảm thêm ' + fmt(TAGT_OFF) + ' → còn ' + fmt(effectivePrice(f.pkg, f.cls) - TAGT_OFF) : '') +
         (showOffer48 ? '\nGiá khuyến mại sau 48h: ' + fmt(a[1]) : (offerExpired ? ' (ưu đãi 48h đã kết thúc)' : '')) +
         '\nGiá gốc: ' + fmt(a[0]) + '\n' + quote.save + '\n' + quote.monthly + ' · ' + quote.per + (quote.bundleSaving ? '\n' + quote.bundleSaving : '');
     };
@@ -1128,6 +1175,8 @@ class Component extends DCLogic {
         course: [f.levelT, f.trackT, f.clsT, f.pkgT, f.slot, f.days].join(' · ') };
       var placement = window.lecPlacementResult;
       if (placement) payload.course += ' · Test đầu vào ' + placement.band + ' (' + placement.score + '/20) · Gợi ý Level ' + placement.level;
+      var cc = codeCheck(f.code);
+      if (cc.ok) payload.course += ' · Mã ' + cc.code + ' (−299K)';
       var signature = JSON.stringify(payload);
       if (!self.leadAttempt || self.leadAttempt.signature !== signature) {
         self.leadAttempt = { signature: signature, id: crypto.randomUUID() };
@@ -1147,8 +1196,8 @@ class Component extends DCLogic {
       }
       var s = summary(f);
       self.sentForm = f;
-      var amt = effectivePrice(f.pkg, f.cls);
-      self.setState({ sent: true, mode: mode, sentName: f.name, sentSummary: s, payAmountNum: amt, payPkg: f.pkg, payCls: f.cls, formErr: '', paid: false, copied: false });
+      var amt = effectivePrice(f.pkg, f.cls) - (codeCheck(f.code).ok ? TAGT_OFF : 0);
+      self.setState({ sent: true, mode: mode, sentName: f.name, sentSummary: s, payAmountNum: amt, payPkg: f.pkg, payCls: f.cls, payCode: codeCheck(f.code).ok ? TAGT : '', formErr: '', paid: false, copied: false });
       if (mode === 'reg') await self.startOrder();
       scrollTo('cam-on');
     };
@@ -1168,7 +1217,11 @@ class Component extends DCLogic {
     var selectedPkg = PRICES[selectedForm.pkg] ? selectedForm.pkg : '3';
     var selectedCls = PRICES[selectedPkg][selectedForm.cls] ? selectedForm.cls : '1-6';
     var formQuote = priceLine(selectedPkg, selectedCls);
-    var payNote = (st.payDiscounted && !offerExpired ? 'giá ưu đãi 48h · ' : 'giá khuyến mại hiện áp dụng · ') + (st.payPkg === '6' ? 'combo khóa 6 tháng' : 'khóa 3 tháng') + ' · ' + (CLS[st.payCls] || '');
+    var fCode = codeCheck(selectedForm.code);
+    if (fCode.ok) { var baseP = effectivePrice(selectedPkg, selectedCls), newP = baseP - TAGT_OFF; formQuote = Object.assign({}, formQuote, { priceLabel: 'ĐÃ ÁP MÃ ' + TAGT + ' · GIẢM THÊM 299K', price: fmt(newP), monthly: '≈ ' + fmt(Math.round(newP / Number(selectedPkg))) + '/tháng', per: '≈ ' + fmt(Math.round(newP / (selectedPkg === '3' ? 24 : 48))) + '/buổi 1,5 giờ', save: 'Đã giảm thêm ' + fmt(TAGT_OFF) + ' (quà tháng 11) · trước mã: ' + fmt(baseP) }); }
+    var codeMsg = !selectedForm.code ? (tagtActive ? 'Nhập mã COLUCYTAGT trong tháng 11 để giảm thêm 299.000đ.' : '') : (fCode.ok ? '✓ Đã áp mã ' + TAGT + ': giảm thêm 299.000đ' : (fCode.err || ''));
+    var codeColor = !selectedForm.code ? '#5A5270' : (fCode.ok ? '#1F6B4A' : '#C0392B');
+    var payNote = (st.payDiscounted && !offerExpired ? 'giá ưu đãi 48h · ' : 'giá khuyến mại hiện áp dụng · ') + (st.payPkg === '6' ? 'combo khóa 6 tháng' : 'khóa 3 tháng') + ' · ' + (CLS[st.payCls] || '') + (st.payCode ? ' · đã áp mã ' + st.payCode + ' (−299K)' : '');
     return {
       showOffer48: showOffer48,
       offerExpired: offerExpired,
@@ -1226,7 +1279,11 @@ class Component extends DCLogic {
       formQuoteLabel: formQuote.priceLabel,
       formQuoteName: CLS[selectedCls] + ' · ' + selectedPkg + ' tháng · ' + (selectedPkg === '3' ? '24' : '48') + ' buổi',
       formQuotePrice: formQuote.price, formQuoteMonthly: formQuote.monthly, formQuotePer: formQuote.per,
-      formQuoteSaving: formQuote.save, formQuoteReference: formQuote.reference,
+      formQuoteSaving: formQuote.save, formQuoteReference: fCode.ok ? '' : formQuote.reference,
+      codeMsg: codeMsg, codeColor: codeColor, tagtActive: tagtActive,
+      copyTagt: function () { try { navigator.clipboard.writeText(TAGT); } catch (e) {} self.setState({ tagtCopied: true }); setTimeout(function () { self.setState({ tagtCopied: false }); }, 2000); },
+      tagtCopyLabel: st.tagtCopied ? 'Đã chép ✓' : 'Chép mã',
+      applyTagt: function () { var fc = document.getElementById('f-code'); if (fc) { fc.value = TAGT; } self.setState({ quoteTick: Date.now() }); var fm = document.getElementById('lec-form'); if (fm) fm.scrollIntoView({ behavior: 'smooth', block: 'start' }); setTimeout(function () { var nm = document.getElementById('f-name'); if (nm) { try { nm.focus({ preventScroll: true }); } catch (e) {} } }, 700); },
       formErr: st.formErr, hasFormErr: st.formErr !== '',
       submitConsult: function () { submit('consult'); },
       submitReg: function () { submit('reg'); },
@@ -1251,7 +1308,7 @@ class Component extends DCLogic {
       paid: st.paid,
       markPaid: function () { self.setState({ paid: true }); scrollTo('cam-on'); },
       renewOrder: function () { self.startOrder(); },
-      resetForm: function () { if (self.payTimer) clearInterval(self.payTimer); self.setState({ paid: false, payUntil: 0, orderCode: '', sent: false, mode: '', sentName: '', sentSummary: '', formErr: '', copied: false }); scrollTo('dang-ky'); },
+      resetForm: function () { if (self.payTimer) clearInterval(self.payTimer); try { var fc = document.getElementById('f-code'); if (fc) fc.value = ''; } catch (e) {} self.setState({ payCode: '', paid: false, payUntil: 0, orderCode: '', sent: false, mode: '', sentName: '', sentSummary: '', formErr: '', copied: false }); scrollTo('dang-ky'); },
       slideX: 'translateX(-' + (st.slide * 100) + '%)', slideNo: st.slide + 1, slideTotal: gvSrc.length, slideName: names[st.slide],
       prev: function () { self.setState({ slide: (st.slide - 1 + gvSrc.length) % gvSrc.length }); },
       next: function () { self.setState({ slide: (st.slide + 1) % gvSrc.length }); },
